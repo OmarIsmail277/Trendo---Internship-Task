@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Trendo - AJAX</title>
+  </head>
+  <body>
+    <div id="my__posts"></div>
+    <div class="container" id="container">
+      <form action="#" class="login__form" id="my__form">
+        <div class="logo">
+          <img
+            class="logo__image"
+            src="./img/logo.svg"
+            width="30px"
+            height="30px"
+            alt="trendo__logo"
+          />
+          <h1 class="logo__header">trendo</h1>
+        </div>
+        <!-- Welcome Heading -->
+        <p id="welcome" class="welcome">Welcome</p>
+        <!-- Login By Email/Phone -->
+        <ul id="login__methods" class="login__methods">
+          <li class="login__methods--byemail">
+            <a
+              id="form__link__email"
+              class="login__methods--link current"
+              href="#"
+              >Email</a
+            >
+          </li>
+          <li class="login__methods--byphone">
+            <a id="form__link__phone" class="login__methods--link" href="#"
+              >Phone</a
+            >
+          </li>
+        </ul>
+        <!-- Email Tab -->
+        <div class="tab email__tab" id="email__tab">
+          <p class="tab__text">Email</p>
+          <input
+            type="email"
+            id="email"
+            placeholder="example@example.com"
+            oninput="this.className=''"
+          />
+        </div>
+        <!-- Phone Tab -->
+        <div class="tab phone__tab" id="phone__tab">
+          <div class="phone__tab--1">
+            <p class="tab__text">Phone</p>
+          </div>
+          <div class="phone__tab--2">
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Enter your mobile number"
+              oninput="this.className=''"
+            />
+            <!-- <input
+              type="tel"
+              name="countryCode"
+              class="countryCode"
+              id="code"
+              value="+20"
+            /> -->
+            <select name="countryCode" class="countryCode" required>
+              <option id="code" data-countryCode="EG" value="+20">+20</option>
+            </select>
+          </div>
+        </div>
+        <!-- Password Tab -->
+        <div class="tab password__tab" id="password__tab">
+          <p class="tab__text">Password</p>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            oninput="this.className=''"
+          />
+        </div>
+        <button id="next_btn" class="btn" type="button">Continue</button>
+        <button id="submit_btn" class="btn" type="button">Login</button>
+        <p id="error" class="error">Wrong Credentials - Please Try Again</p>
+        <p id="correct" class="correct">Logging in...</p>
+
+        <footer class="form__footer">
+          <p class="form__footer__getApp">Get the app from</p>
+          <div class="form__footer--stores">
+            <a href="#" class="store">
+              <img
+                src="./img/playstore.svg"
+                alt="playstore__logo"
+                width="20px"
+              />
+              <span class="store__name" href="#">Play Store</span>
+            </a>
+            <a href="#" class="store">
+              <img src="./img/apple.svg" alt="appstore__logo" width="20px" />
+              <span class="store__name" href="#">App Store</span>
+            </a>
+          </div>
+        </footer>
+      </form>
+    </div>
+    <script src="./script.js"></script>
+    <!-- <script src="./form_script.js"></script> -->
+    <!-- <script src="./normal_script.js"></script> -->
+  </body>
+</html>

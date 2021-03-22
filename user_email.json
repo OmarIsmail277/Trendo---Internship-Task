@@ -1,0 +1,6 @@
+{
+  "user" : {
+    "email" : "testing_email@example.com",
+    "password" : "password"},
+    "device": {"uid":"3", "token": "i"}
+}

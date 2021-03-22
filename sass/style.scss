@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+$primary-color: #40407a;
+
+$border-color: rgb(52, 143, 244);
+$button-color: rgb(18, 25, 67);
+$light-button: rgba(18, 25, 67, 0.79);
+$light-black: rgba(0, 0, 0, 0.15);
+$gray-color: darkgray;
+$light-gray-color: lightgray;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 330px;
+  border: 1px solid $light-black;
+  border-radius: 5px;
+  padding: 1.5rem;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    margin-top: 3.5rem;
+
+    &__header {
+      font-weight: 500;
+    }
+  }
+
+  p.welcome {
+    color: $primary-color;
+  }
+
+  .login__methods {
+    margin-top: 5.5rem;
+    margin-bottom: 1.5rem;
+
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      display: none;
+    }
+    li {
+      a {
+        color: $light-gray-color;
+        position: relative;
+        padding-bottom: 5px;
+
+        &.current {
+          color: #000 !important;
+          &::after {
+            left: 0;
+            right: 0;
+            width: 20px;
+          }
+
+          &:focus::after {
+            // transform: scaleX(1);
+            left: 0;
+            right: 0;
+            width: 20px;
+          }
+        }
+
+        &::after {
+          border-bottom: 2px solid $border-color;
+          content: "";
+          bottom: 0;
+          z-index: -1;
+          left: 50%;
+          right: 50%;
+          position: absolute;
+          //   transform: translateX(-50%);
+          transition: all 0.3s ease-in-out;
+          width: 0;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      height: 0.5px;
+      position: absolute;
+      width: calc(100% + 3rem);
+      background-color: $light-black;
+      bottom: -4px;
+    }
+  }
+
+  .tab {
+    width: 100%;
+    &__text {
+      font-size: 0.75rem;
+      color: $gray-color;
+      margin-bottom: 0.25rem;
+      font-weight: 300;
+    }
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid $light-black;
+      border-radius: 3px;
+
+      &.invalid {
+        border-color: red;
+        // background-color: rgba(255, 0, 0, 0.518);
+        border-width: 3px;
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+      }
+      &::placeholder {
+        font-family: "Ubuntu", sans-serif;
+      }
+    }
+  }
+
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  .email__tab {
+    // display: none;
+  }
+  .phone__tab {
+    display: none;
+    position: relative;
+
+    &::after {
+      content: "Code";
+      position: absolute;
+      font-size: 0.75rem;
+      color: $gray-color;
+      margin-bottom: 0.25rem;
+      font-weight: 300;
+      top: 0;
+      right: 1.65rem;
+    }
+
+    &--2 {
+      display: flex;
+      .countryCode {
+        outline: none;
+        border: 1px solid $light-black;
+        border-radius: 3px;
+        font-family: "Ubuntu", sans-serif;
+        margin-left: 1rem;
+        padding: 0 0.25rem;
+      }
+    }
+  }
+  .password__tab {
+    display: none;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+  }
+
+  #next_btn,
+  #submit_btn {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    background-color: $button-color;
+    box-shadow: 0 3px $light-button;
+    color: #fff;
+    margin-top: 1rem;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      box-shadow: 0 1px $light-button;
+      transform: translateY(2px);
+    }
+  }
+
+  #submit_btn {
+    display: none;
+  }
+
+  .form__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5rem;
+    width: 100%;
+
+    &__getApp {
+      font-size: 0.7rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    &--stores {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .store {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $light-gray-color;
+        margin: 2px;
+        padding: 5px;
+        border-radius: 5px;
+        transition: all 0.3s;
+        width: 50%;
+
+        &:hover {
+          border-color: $primary-color;
+        }
+
+        &__name {
+          color: #000;
+          margin-left: 0.25rem;
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+#my__posts {
+  z-index: 1000;
+  font-size: 1.1rem;
+  position: absolute;
+  background: #4776e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8e54e9,
+    #4776e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #8e54e9,
+    #4776e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-box-shadow: 0px 10px 13px -7px #000,
+    12px 18px 11px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 13px -7px #000000, 12px 18px 11px 4px rgba(0, 0, 0, 0.5);
+  padding: 3rem;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  transform: translate(-1050%, -50%);
+  transition: all 0.5s;
+  color: #fff;
+  border-radius: 5px;
+  font-family: "Ubuntu", cursive;
+  text-transform: capitalize;
+
+  span {
+    color: navy;
+    font-weight: 600;
+    text-shadow: 3px 3px 3px lightblue;
+  }
+}
+
+#error,
+#correct {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-style: italic;
+  display: none;
+}
+
+#error {
+  color: red;
+}
+
+#correct {
+  font-size: 1rem;
+  color: #2dce69;
+}
+
+::selection {
+  background-color: silver;
+}
