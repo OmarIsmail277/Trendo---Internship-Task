@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,10 +8,12 @@
     <title>Trendo - AJAX</title>
   </head>
   <body>
-    <div id="my__posts"></div>
+    <div id="home"><a href="./index.html">العودة للرئيسية »</a></div>
+    <div dir="ltr" id="my__posts"></div>
     <div class="container" id="container">
       <form action="#" class="login__form" id="my__form">
         <div class="logo">
+          <h1 class="logo__header">trendo</h1>
           <img
             class="logo__image"
             src="./img/logo.svg"
@@ -19,46 +21,48 @@
             height="30px"
             alt="trendo__logo"
           />
-          <h1 class="logo__header">trendo</h1>
         </div>
         <!-- Welcome Heading -->
-        <p id="welcome" class="welcome">Welcome</p>
+        <p id="welcome" class="welcome">مرحبا بك</p>
         <!-- Login By Email/Phone -->
         <ul id="login__methods" class="login__methods">
+          <li class="login__methods--byphone">
+            <a id="form__link__phone" class="login__methods--link" href="#"
+              >رقم الهاتف</a
+            >
+          </li>
           <li class="login__methods--byemail">
             <a
               id="form__link__email"
               class="login__methods--link current"
               href="#"
-              >Email</a
-            >
-          </li>
-          <li class="login__methods--byphone">
-            <a id="form__link__phone" class="login__methods--link" href="#"
-              >Phone</a
+              >البريد الإلكتروني</a
             >
           </li>
         </ul>
         <!-- Email Tab -->
         <div class="tab email__tab" id="email__tab">
-          <p class="tab__text">Email</p>
+          <p class="tab__text">البريد الإلكتروني</p>
           <input
             type="email"
             id="email"
-            placeholder="example@example.com"
+            placeholder="مثال :  rex.kautzer@yahoo.com"
             oninput="this.className=''"
           />
         </div>
         <!-- Phone Tab -->
         <div class="tab phone__tab" id="phone__tab">
           <div class="phone__tab--1">
-            <p class="tab__text">Phone</p>
+            <p class="tab__text">رقم الهاتف</p>
           </div>
           <div class="phone__tab--2">
+            <select name="countryCode" class="countryCode" required>
+              <option id="code" data-countryCode="EG" value="+20">۲۰+</option>
+            </select>
             <input
               type="tel"
               id="phone"
-              placeholder="Enter your mobile number"
+              placeholder="ادخل رقم الهاتف"
               oninput="this.className=''"
             />
             <!-- <input
@@ -68,28 +72,26 @@
               id="code"
               value="+20"
             /> -->
-            <select name="countryCode" class="countryCode" required>
-              <option id="code" data-countryCode="EG" value="+20">+20</option>
-            </select>
           </div>
         </div>
         <!-- Password Tab -->
         <div class="tab password__tab" id="password__tab">
-          <p class="tab__text">Password</p>
+          <p class="tab__text">الرقم السري</p>
           <input
             type="password"
             id="password"
-            placeholder="Enter your password"
+            placeholder="ادخل علي الأقل ۸ حروف"
             oninput="this.className=''"
           />
+          <a href="#" class="forget__pw">هل نسيت كلمة السر؟</a>
         </div>
-        <button id="next_btn" class="btn" type="button">Continue</button>
-        <button id="submit_btn" class="btn" type="button">Login</button>
-        <p id="error" class="error">Wrong Credentials - Please Try Again</p>
-        <p id="correct" class="correct">Logging in...</p>
+        <button id="next_btn" class="btn" type="button">استمرار</button>
+        <button id="submit_btn" class="btn" type="button">تسجيل الدخول</button>
+        <p id="error" class="error">مدخلات خاطئة - يرجى المحاولة مرة أخرى</p>
+        <p id="correct" class="correct">جاري تسجيل الدخول</p>
 
         <footer class="form__footer">
-          <p class="form__footer__getApp">Get the app from</p>
+          <p class="form__footer__getApp">احصل علي التطبيق من</p>
           <div class="form__footer--stores">
             <a href="#" class="store">
               <img
@@ -97,11 +99,15 @@
                 alt="playstore__logo"
                 width="20px"
               />
-              <span class="store__name" href="#">Play Store</span>
+              <span class="store__name" href="#"
+                >تحميل التطبيق من جوجل بلاي</span
+              >
             </a>
             <a href="#" class="store">
               <img src="./img/apple.svg" alt="appstore__logo" width="20px" />
-              <span class="store__name" href="#">App Store</span>
+              <span class="store__name" href="#"
+                >تحميل التطبيق من تطبيقات ابل</span
+              >
             </a>
           </div>
         </footer>

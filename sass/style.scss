@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap");
 $primary-color: #40407a;
 
 $border-color: rgb(52, 143, 244);
@@ -27,7 +27,8 @@ a {
 
 body {
   box-sizing: border-box;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Almarai", sans-serif;
+  font-size: 11px;
 }
 
 .container {
@@ -53,19 +54,27 @@ body {
     justify-content: center;
     color: $primary-color;
     margin-top: 3.5rem;
+    font-weight: bold;
 
     &__header {
       font-weight: 500;
+      font-size: 2rem;
+      font-family: "Ubuntu", sans-serif;
+      margin-left: 0.25rem;
     }
   }
 
   p.welcome {
     color: $primary-color;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    font-weight: 600;
   }
 
   .login__methods {
     margin-top: 5.5rem;
     margin-bottom: 1.5rem;
+    font-weight: bold;
 
     display: flex;
     width: 100%;
@@ -82,7 +91,9 @@ body {
       a {
         color: $light-gray-color;
         position: relative;
-        padding-bottom: 5px;
+        padding-bottom: 0.75rem;
+        display: inline-block;
+        margin-top: 1rem;
 
         &.current {
           color: #000 !important;
@@ -101,9 +112,9 @@ body {
         }
 
         &::after {
-          border-bottom: 2px solid $border-color;
+          border-bottom: 2px solid $primary-color;
           content: "";
-          bottom: 0;
+          bottom: -0.03rem;
           z-index: -1;
           left: 50%;
           right: 50%;
@@ -122,14 +133,14 @@ body {
       position: absolute;
       width: calc(100% + 3rem);
       background-color: $light-black;
-      bottom: -4px;
+      bottom: 0;
     }
   }
 
   .tab {
     width: 100%;
     &__text {
-      font-size: 0.75rem;
+      font-size: 0.6rem;
       color: $gray-color;
       margin-bottom: 0.25rem;
       font-weight: 300;
@@ -139,6 +150,10 @@ body {
       padding: 0.75rem;
       border: 1px solid $light-black;
       border-radius: 3px;
+
+      &:focus {
+        outline-color: $primary-color;
+      }
 
       &.invalid {
         border-color: red;
@@ -150,7 +165,21 @@ body {
         perspective: 1000px;
       }
       &::placeholder {
-        font-family: "Ubuntu", sans-serif;
+        font-family: "Almarai", sans-serif;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .password__tab {
+    position: relative;
+    .forget__pw {
+      position: absolute;
+      bottom: -1.25rem;
+      color: $primary-color;
+      left: 0;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
@@ -185,15 +214,20 @@ body {
     display: none;
     position: relative;
 
+    .tab__text {
+      position: relative;
+      right: 4.5rem;
+    }
+
     &::after {
-      content: "Code";
+      content: "الكود";
       position: absolute;
-      font-size: 0.75rem;
+      font-size: 0.6rem;
       color: $gray-color;
       margin-bottom: 0.25rem;
       font-weight: 300;
       top: 0;
-      right: 1.65rem;
+      right: 0rem;
     }
 
     &--2 {
@@ -202,7 +236,7 @@ body {
         outline: none;
         border: 1px solid $light-black;
         border-radius: 3px;
-        font-family: "Ubuntu", sans-serif;
+        font-family: "Almarai", sans-serif;
         margin-left: 1rem;
         padding: 0 0.25rem;
       }
@@ -227,6 +261,7 @@ body {
     color: #fff;
     margin-top: 1rem;
     transition: all 0.3s;
+    font-family: "Almarai", sans-serif;
 
     &:hover {
       opacity: 0.9;
@@ -251,9 +286,9 @@ body {
     width: 100%;
 
     &__getApp {
-      font-size: 0.7rem;
+      font-size: 0.55rem;
       margin-bottom: 1rem;
-      font-weight: 400;
+      font-weight: 600;
     }
 
     &--stores {
@@ -279,17 +314,30 @@ body {
 
         &__name {
           color: #000;
-          margin-left: 0.25rem;
-          font-size: 0.75rem;
+          margin-right: 0.5rem;
+          font-size: 0.65rem;
         }
       }
     }
   }
 }
-
+#home {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 1rem;
+  font-family: "Almarai", sans-serif;
+  display: none;
+  a {
+    color: #4776e6;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 #my__posts {
   z-index: 1000;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   position: absolute;
   background: #4776e6; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -308,18 +356,27 @@ body {
   padding: 3rem;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, -50%); */
-  transform: translate(-1050%, -50%);
-  transition: all 0.5s;
+  transform: translate(-50%, -50%);
+  // transform: translate(-1050%, -50%);
+  // transition: all 0.5s;
+  display: none;
   color: #fff;
   border-radius: 5px;
   font-family: "Ubuntu", cursive;
   text-transform: capitalize;
+  width: 80%;
+  .post {
+    margin-bottom: 0.5rem;
+    border: 3px solid $primary-color;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
 
   span {
     color: navy;
     font-weight: 600;
-    text-shadow: 3px 3px 3px lightblue;
+    text-decoration: underline;
+    // text-shadow: 1px 1px 1px lightblue;
   }
 }
 

@@ -1,4 +1,6 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap");
 *,
 *::after,
 *::before {
@@ -17,7 +19,8 @@ a {
 
 body {
   box-sizing: border-box;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Almarai", sans-serif;
+  font-size: 11px;
 }
 
 .container {
@@ -43,16 +46,24 @@ body {
   justify-content: center;
   color: #40407a;
   margin-top: 3.5rem;
+  font-weight: bold;
 }
 .login__form .logo__header {
   font-weight: 500;
+  font-size: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  margin-left: 0.25rem;
 }
 .login__form p.welcome {
   color: #40407a;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  font-weight: 600;
 }
 .login__form .login__methods {
   margin-top: 5.5rem;
   margin-bottom: 1.5rem;
+  font-weight: bold;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -68,7 +79,9 @@ body {
 .login__form .login__methods li a {
   color: lightgray;
   position: relative;
-  padding-bottom: 5px;
+  padding-bottom: 0.75rem;
+  display: inline-block;
+  margin-top: 1rem;
 }
 .login__form .login__methods li a.current {
   color: #000 !important;
@@ -84,9 +97,9 @@ body {
   width: 20px;
 }
 .login__form .login__methods li a::after {
-  border-bottom: 2px solid #348ff4;
+  border-bottom: 2px solid #40407a;
   content: "";
-  bottom: 0;
+  bottom: -0.03rem;
   z-index: -1;
   left: 50%;
   right: 50%;
@@ -101,13 +114,13 @@ body {
   position: absolute;
   width: calc(100% + 3rem);
   background-color: rgba(0, 0, 0, 0.15);
-  bottom: -4px;
+  bottom: 0;
 }
 .login__form .tab {
   width: 100%;
 }
 .login__form .tab__text {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: darkgray;
   margin-bottom: 0.25rem;
   font-weight: 300;
@@ -118,6 +131,9 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
+.login__form .tab input:focus {
+  outline-color: #40407a;
+}
 .login__form .tab input.invalid {
   border-color: red;
   border-width: 3px;
@@ -127,7 +143,20 @@ body {
   perspective: 1000px;
 }
 .login__form .tab input::placeholder {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Almarai", sans-serif;
+  font-size: 0.75rem;
+}
+.login__form .password__tab {
+  position: relative;
+}
+.login__form .password__tab .forget__pw {
+  position: absolute;
+  bottom: -1.25rem;
+  color: #40407a;
+  left: 0;
+}
+.login__form .password__tab .forget__pw:hover {
+  text-decoration: underline;
 }
 @keyframes shake {
   10%, 90% {
@@ -147,15 +176,19 @@ body {
   display: none;
   position: relative;
 }
+.login__form .phone__tab .tab__text {
+  position: relative;
+  right: 4.5rem;
+}
 .login__form .phone__tab::after {
-  content: "Code";
+  content: "الكود";
   position: absolute;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: darkgray;
   margin-bottom: 0.25rem;
   font-weight: 300;
   top: 0;
-  right: 1.65rem;
+  right: 0rem;
 }
 .login__form .phone__tab--2 {
   display: flex;
@@ -164,7 +197,7 @@ body {
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Almarai", sans-serif;
   margin-left: 1rem;
   padding: 0 0.25rem;
 }
@@ -186,6 +219,7 @@ body {
   color: #fff;
   margin-top: 1rem;
   transition: all 0.3s;
+  font-family: "Almarai", sans-serif;
 }
 .login__form #next_btn:hover,
 .login__form #submit_btn:hover {
@@ -208,9 +242,9 @@ body {
   width: 100%;
 }
 .login__form .form__footer__getApp {
-  font-size: 0.7rem;
+  font-size: 0.55rem;
   margin-bottom: 1rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 .login__form .form__footer--stores {
   display: flex;
@@ -234,13 +268,28 @@ body {
 }
 .login__form .form__footer--stores .store__name {
   color: #000;
-  margin-left: 0.25rem;
-  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  font-size: 0.65rem;
+}
+
+#home {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 1rem;
+  font-family: "Almarai", sans-serif;
+  display: none;
+}
+#home a {
+  color: #4776e6;
+}
+#home a:hover {
+  text-decoration: underline;
 }
 
 #my__posts {
   z-index: 1000;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   position: absolute;
   background: #4776e6;
   /* fallback for old browsers */
@@ -253,18 +302,24 @@ body {
   padding: 3rem;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, -50%); */
-  transform: translate(-1050%, -50%);
-  transition: all 0.5s;
+  transform: translate(-50%, -50%);
+  display: none;
   color: #fff;
   border-radius: 5px;
   font-family: "Ubuntu", cursive;
   text-transform: capitalize;
+  width: 80%;
+}
+#my__posts .post {
+  margin-bottom: 0.5rem;
+  border: 3px solid #40407a;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 #my__posts span {
   color: navy;
   font-weight: 600;
-  text-shadow: 3px 3px 3px lightblue;
+  text-decoration: underline;
 }
 
 #error,

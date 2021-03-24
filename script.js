@@ -52,6 +52,7 @@ function nextStep(){
         button_1.style.display="none";
         // Displaly 'block' the 'submit' button
         button_2.style.display="block";
+        document.getElementById("home").style.display = "block";
     }
 }
 
@@ -74,7 +75,7 @@ function validateForm(){
         if (y[i].value == ""){
             // add an invalid class the input field
             y[i].classList.add("invalid");
-            y[i].placeholder = "Enter an input here please! ⚠";
+            y[i].placeholder = "من فضلك ادخل المطلوب هنا ⚠";
             // and set the valid status to false
             valid = false;
         }
@@ -201,7 +202,7 @@ function getInput(){
                 "</div>"
             }
             document.getElementById("my__posts").innerHTML = output;
-            document.getElementById("my__posts").style.transform = "translate(-50%, -50%)";
+            document.getElementById("my__posts").style.display = "block";
             document.getElementById("container").style.display = "none";
             // console.log(posts_json["data"]["posts"]);
             console.log(main__posts);
