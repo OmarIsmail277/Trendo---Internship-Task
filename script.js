@@ -197,8 +197,8 @@ function getInput(){
             var output = "";
             for (var i in main__posts){
                 output += "<div class='post'>" +"<span> Post id:</span> " +
-                main__posts[i].id + " - <span> Post username: </span>" +
-                main__posts[i].user.username + " | <span> Post body: </span> " + main__posts[i].body +
+                main__posts[i].id + " - <span> name: </span>" +
+                main__posts[i].user.name + " | <span> Post body: </span> " + main__posts[i].body +
                 "</div>"
             }
             document.getElementById("my__posts").innerHTML = output;
