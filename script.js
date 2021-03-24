@@ -205,7 +205,7 @@ function getInput(){
             document.getElementById("my__posts").style.display = "block";
             document.getElementById("container").style.display = "none";
             // console.log(posts_json["data"]["posts"]);
-            console.log(main__posts);
+            // console.log(main__posts);
             // alert("Great Again!");
         }
         else {
