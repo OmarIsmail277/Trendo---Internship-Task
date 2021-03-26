@@ -316,6 +316,24 @@ body {
   padding: 0.5rem;
   border-radius: 5px;
 }
+#my__posts .post .like {
+  color: blue;
+  outline: none;
+  border: 3px solid currentColor;
+  padding: 0.25rem;
+  transition: all 0.3s;
+  margin-left: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+}
+#my__posts .post .like::before {
+  content: "Like ";
+}
+#my__posts .post .like:hover {
+  color: crimson;
+}
 #my__posts span {
   color: navy;
   font-weight: 600;

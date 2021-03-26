@@ -370,6 +370,25 @@ body {
     border: 3px solid $primary-color;
     padding: 0.5rem;
     border-radius: 5px;
+
+    .like {
+      color: blue;
+      outline: none;
+      border: 3px solid currentColor;
+      padding: 0.25rem;
+      transition: all 0.3s;
+      margin-left: 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      font-family: "Ubuntu", sans-serif;
+      cursor: pointer;
+      &::before {
+        content: "Like ";
+      }
+      &:hover {
+        color: crimson;
+      }
+    }
   }
 
   span {

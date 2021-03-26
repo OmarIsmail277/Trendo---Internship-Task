@@ -83,11 +83,12 @@ function validateForm(){
     return valid;
 }
 
+////////////////////////////////////////////////////////////////////////////////////
 // Second Part of the script is dealing with APIs and GET & POST Requests Through AJAX
-
 // Firing the postInput function on clicking the Login Button to Display Posts
 button_2.addEventListener("click", postInput);
 
+// 1- This function is dealing with Login by Email/Phone
 function postInput(e) {
     if(validateForm())  {
         e.preventDefault();
@@ -97,8 +98,8 @@ function postInput(e) {
         var user_phone = document.getElementById("phone").value;
         var country_code = document.getElementById("code").value;
 
-        // defining objects
-
+        // Defining Objects
+        // -----------------------
         // login_by_phone object
         var user_by_phone = { 
             "user": 
@@ -128,7 +129,7 @@ function postInput(e) {
     // Request type is 'Email' by default
     var request_type = "email";
 
-    // Converting JS Object to JSON
+    // Converting JS Objects to JSON String
     var email_data = JSON.stringify(user_by_email);
     var phone_data = JSON.stringify(user_by_phone);
 
@@ -140,7 +141,7 @@ function postInput(e) {
         request_type = 'phone';
     }
 
-    // url of the server (remote-server of InovaEG)
+    // url of the server (remote-server of the Company)
     var url = "http://15.237.2.25/api/v1/login_by_" + request_type;
 
     // Sending the POST Request
@@ -150,7 +151,7 @@ function postInput(e) {
         if (xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
             error.style.display = "none";
-            console.log(json);
+            // console.log(json);
             correct.style.display = "block";
             getInput();
         }
@@ -158,12 +159,10 @@ function postInput(e) {
             error.style.display = "block";
         }
     };
-
     // Sending Email Data if the user is logging by email
     if (email_style === "block" && phone_style === "none") {
         xhr.send(email_data);
     }
-
     // Sending Phone Data if the user is logging by phone
     else if (phone_style === "block" && email_style === "none") {
         xhr.send(phone_data);
@@ -171,7 +170,7 @@ function postInput(e) {
 }
 }
 
-// This Function is Dealing with "list home posts"
+// 2- This Function is Dealing with "list home posts"
 function getInput(){
     var posts = {
         "paging" : {
@@ -189,24 +188,43 @@ function getInput(){
     // Authorization Token "Bearer Token"
     var token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMTYsImRldmljZSI6NDY1LCJleHAiOjQ3NzIwMjY1NzJ9.8jscVW4sMfxhYpdTnuVtlRg5q5tMYCAIk3ME4bLBs_g";
     xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Authorization", "Bearer " + token);
+    // xhr.setRequestHeader("Authorization", "Bearer {token}");
+     xhr.setRequestHeader("Authorization", "Bearer " + token);
     xhr.onload = function () {
         if (xhr.status === 200) {
             var posts_json = JSON.parse(xhr.responseText);
             var main__posts = posts_json["data"]["posts"];
+
             var output = "";
             for (var i in main__posts){
                 output += "<div class='post'>" +"<span> Post id:</span> " +
                 main__posts[i].id + " - <span> name: </span>" +
                 main__posts[i].user.name + " | <span> Post body: </span> " + main__posts[i].body +
+                '<button data-color="0" class="like">'  + main__posts[i].num_of_likes + '</button>' + 
                 "</div>"
             }
             document.getElementById("my__posts").innerHTML = output;
-            document.getElementById("my__posts").style.display = "block";
             document.getElementById("container").style.display = "none";
-            // console.log(posts_json["data"]["posts"]);
-            // console.log(main__posts);
-            // alert("Great Again!");
+            document.getElementById("my__posts").style.display = "block";
+
+            var btns = document.getElementsByClassName("like");   
+            for (let i = 0; i < btns.length; i++)
+            {   
+                var btn = btns[i];    
+                if (btn.innerHTML !== "0") {
+                        btn.style.color ="crimson";
+                }    
+                btn.onclick = function(){
+                    // Changing the number of likes from the JSON File
+                    this.innerHTML = likePost(main__posts[i].id);
+                    if (this.innerHTML !== "0") {
+                        this.style.color ="crimson";
+                    }
+                    if (this.innerHTML === "0") {
+                        this.style.color ="blue";
+                    }
+                }
+            }
         }
         else {
             alert("Oops! Request Failed! Your status code is " + xhr.status);
@@ -214,6 +232,35 @@ function getInput(){
     };
     xhr.send(posts_data)
 }
+
+// This function is dealing with 'like/unlike post'
+function likePost(postId) {
+    var x;
+    // Sending requests and receiving responses in JSON format using POST method
+    var xhr = new XMLHttpRequest();
+    
+    // url of the server (remote-server of the Company)
+    var url = 'http://15.237.2.25/api/v1/posts/' + postId + '/like-unlike';
+
+    // Sending the POST Request
+    xhr.open("POST", url, false);
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("Accept", "application/json");
+    var token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMTcsImRldmljZSI6NDY0LCJleHAiOjQ3NzIzMDg3NzJ9.PVPrRWzSpD3l6Sdq3p-kb3RZEYsA2c85VL5DSdujg9s";
+    xhr.setRequestHeader("Authorization", "Bearer " + token);
+    // xhr.setRequestHeader("Authorization", "Bearer {token}");
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            x = json["data"]["num_of_likes"];
+        }
+    };
+    xhr.send();
+    return x;
+}
+
+
 
 
 
